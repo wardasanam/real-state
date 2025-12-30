@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utility classes for complex animations 
+  that are difficult to configure solely in tailwind.config.js 
+*/
+
+@layer utilities {
+  /* Creating the moving gradient text effect */
+  .gradient-text {
+    background: linear-gradient(300deg, #2563eb, #9333ea, #db2777, #2563eb);
+    background-size: 200% auto;
+    animation: gradient-flow 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Creating the metallic shine pass-through effect */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right, 
+      transparent, 
+      rgba(255, 255, 255, 0.4), 
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: shine 6s infinite;
+    pointer-events: none; /* Ensure clicks pass through */
+  }
+
+  /* Glassmorphism panel helper */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  /* 3D Preserves */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+}
